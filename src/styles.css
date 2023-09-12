@@ -112,3 +112,15 @@ form button:hover {
     margin-bottom: 0.5em;
     font-size: 1.2em;
 }
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    opacity: 0.5;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 70px;
+    height: 70px;
+}

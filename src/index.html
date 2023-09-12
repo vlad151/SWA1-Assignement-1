@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Wacky Weather</title>
   </head>
   <body>
@@ -14,7 +14,7 @@
             <strong>Navigation</strong>
         </div>
         <ul>
-            <li><a href="/src/sendWeatherData.html">Send Weather Data</a></li>
+            <li><a href="src/sendWeatherData.html">Send Weather Data</a></li>
         </ul>
     </nav>
     
@@ -31,9 +31,12 @@
 
     <!-- Section to display the hourly forecast -->
     <section id="hourly-forecast">
-      <h2>Hourly Forecast for the Next 24 Hours</h2>
+      <h2>Hourly Forecast for the Next 24 Hours</h2> 
+      <div class="card">
+        <p>hourly forecast</p>
+      </div>
     </section>
-
+     
     <!-- Section to display the latest measurements -->
     <section id="latest-measurements">
       <h2>Latest Measurements</h2>
@@ -59,10 +62,10 @@
         <!-- Data here -->
       </div>
     </section>
-
- 
+<script src="init.js"></script>
+<!--  
     <script src="src/xmlHttpRequest.js"></script>
-    <script src="src/fetchAPI.js"></script>
+    <script src="src/fetchAPI.js"></script> -->
 
   </body>
 </html>
