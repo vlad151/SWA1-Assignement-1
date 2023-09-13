@@ -1,6 +1,9 @@
-export default function createTemperature(time, place, value, type, unit) {
-    let weatherData;
-    weatherData = createWeatherData(time, place, value, type, unit);
+import weatherData from "./weatherData";
+import Units from "./units";
+
+export default function temperature(time, place, value, type, unit) {
+    let _weatherData;
+    _weatherData = weatherData(time, place, value, type, unit);
   
     function convertToF() {
       let fahrenheitValue;
@@ -21,6 +24,6 @@ export default function createTemperature(time, place, value, type, unit) {
       }
       return celsiusValue;
     }
-    return { ...weatherData, convertToF, convertToC };
+    return { ..._weatherData, convertToF, convertToC };
   }
 

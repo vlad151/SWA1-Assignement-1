@@ -1,4 +1,4 @@
-export default function createEvent(time, place) {
+export default function event(time, place) {
   function getTime() {
     return time;
   }

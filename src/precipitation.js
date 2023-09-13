@@ -1,4 +1,7 @@
-function createPrecipitation(
+import weatherData from "./weatherData";
+import Units from "./units";
+
+export default function precipitation(
     time,
     place,
     value,
@@ -6,8 +9,8 @@ function createPrecipitation(
     unit,
     precipitationType
   ) {
-    let weatherData;
-    weatherData = createWeatherData(time, place, value, type, unit);
+    let _weatherData;
+    _weatherData = weatherData(time, place, value, type, unit);
   
     function getPrecipitationType() {
       return precipitationType;
@@ -30,6 +33,6 @@ function createPrecipitation(
       }
       return mmValue;
     }
-    return { ...weatherData, getPrecipitationType, convertToInches, convertToMM };
+    return { ..._weatherData, getPrecipitationType, convertToInches, convertToMM };
   }
   

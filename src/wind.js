@@ -1,6 +1,9 @@
-function createWind(time, place, value, type, unit, direction) {
-    let weatherData;
-    weatherData = createWeatherData(time, place, value, type, unit);
+import weatherData from "./weatherData";
+import Units from "./units";
+
+export default function wind(time, place, value, type, unit, direction) {
+    let _weatherData;
+    _weatherData = weatherData(time, place, value, type, unit);
   
     function getDirection() {
       return direction;
@@ -25,5 +28,5 @@ function createWind(time, place, value, type, unit, direction) {
       }
       return msValue;
     }
-    return { ...weatherData, getDirection, convertToMPH, convertToMS };
+    return { ..._weatherData, getDirection, convertToMPH, convertToMS };
   }

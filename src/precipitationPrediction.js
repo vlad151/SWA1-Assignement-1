@@ -1,7 +1,7 @@
-import createWeatherPrediction from "./createWeatherPrediction.js";
+import weatherPrediction from "./weatherPrediction.js";
 import Units from "./units.js"
 
-export default function createPrecipitationPrediction(
+export default function precipitationPrediction(
     time,
     place,
     min,
@@ -10,8 +10,8 @@ export default function createPrecipitationPrediction(
     unit,
     precipitationTypes
   ) {
-    let weatherPrediction;
-    weatherPrediction = createWeatherPrediction(
+    let _weatherPrediction;
+    _weatherPrediction = weatherPrediction(
       time,
       place,
       min,
@@ -51,7 +51,7 @@ export default function createPrecipitationPrediction(
       return mmValue;
     }
     return {
-      ...weatherPrediction,
+      ..._weatherPrediction,
       getExpectedTypes,
       matches,
       convertToInches,

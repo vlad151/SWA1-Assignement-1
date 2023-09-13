@@ -1,7 +1,5 @@
 {
-  "type": "module",
-  "scripts": {
-    "start": "http-server -p 8081 && open http://localhost:8081",
+  
     "name": "Wacky Weather",
     "version": "1.0.0",
     "scripts": {
@@ -17,4 +15,3 @@
       "webpack-dev-server": "^4.11.0"
     }
   }
-}

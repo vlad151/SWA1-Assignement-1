@@ -1,4 +1,7 @@
-export default function createWindPrediction(
+import weatherPrediction from "./weatherPrediction";
+import Units from "./units";
+
+export default function windPrediction(
   time,
   place,
   min,
@@ -7,8 +10,8 @@ export default function createWindPrediction(
   unit,
   expectedDirection
 ) {
-  let weatherPrediction;
-  weatherPrediction = createWeatherPrediction(
+  let _weatherPrediction;
+  _weatherPrediction = weatherPrediction(
     time,
     place,
     min,
@@ -49,7 +52,7 @@ export default function createWindPrediction(
     return msValue;
   }
   return {
-    ...weatherPrediction,
+    ..._weatherPrediction,
     getExpectedDirection,
     matches,
     convertToMPH,

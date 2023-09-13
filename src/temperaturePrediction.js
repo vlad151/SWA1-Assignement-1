@@ -1,9 +1,10 @@
-import createWeatherPrediction from "./createWeatherPrediction.js";
+import weatherPrediction from "./createWeatherPrediction.js";
+import Units from "./units.js";
 
 
-export default function createTemperaturePrediction(time, place, min, max, type, unit) {
-    let weatherPrediction;
-    weatherData = createWeatherPrediction(time, place, min, max, type, unit);
+export default function temperaturePrediction(time, place, min, max, type, unit) {
+    let _weatherPrediction;
+    _weatherPrediction = weatherPrediction(time, place, min, max, type, unit);
   
     function convertToF() {
       let fahrenheitValue;
@@ -18,12 +19,12 @@ export default function createTemperaturePrediction(time, place, min, max, type,
     function convertToC() {
       let celsiusValue;
       if (unit === Units.C) {
-        celsiusVsalue = value;
+        celsiusValue = value;
       } else {
         celsiusValue = (value - 32) / 1.8;
       }
       return celsiusValue;
     }
   
-    return { ...weatherPrediction, convertToF, convertToC };
+    return { ..._weatherPrediction, convertToF, convertToC };
   }
