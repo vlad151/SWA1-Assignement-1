@@ -1,5 +1,5 @@
 import "../src/styles.css"
-import { fetchWeatherData, forecastData } from "./fetchAPI";
+import fetchAPI from './fetchAPI.js';
 import dayjs from "dayjs";
 
 // document.addEventListener("DOMContentLoaded", function() {
