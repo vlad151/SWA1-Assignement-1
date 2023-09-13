@@ -1,7 +1,6 @@
 import weatherData from "./weatherData.js";
 import Units from "./units.js";
-import Type from "./types.js";
-import Place from "./places.js";
+
 
 export default function wind(time, place, value, type, unit, direction) {
   let _weatherData = weatherData(time, place, value, type, unit);

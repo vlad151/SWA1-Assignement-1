@@ -1,7 +1,6 @@
 import weatherPrediction from "./weatherPrediction.js";
 import Units from "./units.js";
-import Type from "./types.js";
-import Place from "./places.js";
+
 
 export default function temperaturePrediction(time, place, min, max, type, unit) {
   let _weatherPrediction = weatherPrediction(time, place, min, max, type, unit);

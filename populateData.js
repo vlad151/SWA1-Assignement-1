@@ -1,4 +1,3 @@
-
 export function populateHourlyForecast(data) {
     const hourlyForecastSection = document.getElementById('hourly-forecast');
     hourlyForecastSection.innerHTML = ''; // Clear any existing data

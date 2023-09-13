@@ -1,4 +1,4 @@
-import { populateHourlyForecast, populateLatestMeasurements, populateLastDayStats } from './populateData.js';
+import { populateHourlyForecast, populateLatestMeasurements, populateLastDayStats } from '../../populateData.js';
 import dayjs from 'dayjs';
 document.addEventListener('DOMContentLoaded', () => {
     const citySelect = document.getElementById('city-select');
@@ -61,8 +61,6 @@ const list = document.createDocumentFragment();
         li.appendChild(from)
         li.appendChild(to)
  
-        
-        
         list.appendChild(li)
         ul.appendChild(list)
 

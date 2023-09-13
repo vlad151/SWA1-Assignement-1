@@ -125,7 +125,7 @@ form button:hover {
     height: 70px;
 }
 li{
-    min-width: 100px;
+    width: 100px;
     min-height: 100px;
     display: flex;
     flex-direction: column;

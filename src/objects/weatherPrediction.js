@@ -1,8 +1,4 @@
 import event from "./event.js";
-import weatherData from "./weatherData.js";
-import Units from "./units.js";
-import Type from "./types.js";
-import Place from "./places.js";
 
 
 export default function weatherPrediction(time, place, min, max, type, unit) {

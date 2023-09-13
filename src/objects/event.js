@@ -1,4 +1,4 @@
-import Place from "./places.js";
+
 
 export default function event(time, place) {
   function getTime() {
