@@ -24,3 +24,8 @@ console.log(forecastData("Horsens"), "forecast data")
 
 // const filteredData= cityForecastData.filter(data=>data.time.isAfter(startTime))
 // console.log("filtered data", filteredData)
+function refreshPage(){
+    window.location.reload()
+}
+const refreshButton = document.getElementById("refreshButton");
+refreshButton.addEventListener("click", refreshPage);
