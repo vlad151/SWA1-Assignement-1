@@ -1,6 +1,6 @@
 {
-  
-    "name": "Wacky Weather",
+  "type": "module",
+    "name": "wacky-weather",
     "version": "1.0.0",
     "scripts": {
       "build": "webpack",
