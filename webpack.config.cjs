@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     main: './src/init.js',
+    fetchAPI: './src/api/fetchAPI.js', // Adjust the path to point to your fetchAPI.js file 
     xmlhttpRequest: './src/api/xmlHttpRequest.js', // Adjust the path to point to your xmlhttpRequest.js file
   },
   mode: 'development',
@@ -21,7 +22,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Wacky weather',
-      template: 'src/index.html'
+      template: 'src/index.html',
+      chunks: ['fetchAPI'],
     }),
     new HtmlWebpackPlugin({
       title: 'Wacky weather http',

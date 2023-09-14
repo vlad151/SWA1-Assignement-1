@@ -1,11 +1,16 @@
+import "../../src/styles.css";
 import dayjs from "dayjs";
 import Type from "../objects/types.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const citySelect = document.getElementById("city-select");
+  const initialCity = citySelect.value;
+  forecastData(initialCity)
+
 
   citySelect.addEventListener("change", () => {
     const selectedCity = citySelect.value;
+    forecastData(selectedCity)
     fetchWeatherData(selectedCity);
     console.log(selectedCity, "selected city")
   });
@@ -51,7 +56,7 @@ const windRow = document.getElementById("wind_row");
 const cloudRow = document.getElementById("cloud_row");
 
 export function forecastData(city) {
-  fetch(`http://localhost:8080/forecast/${value}`, {
+  fetch(`http://localhost:8080/forecast/${city}`, {
     method: "GET",
     body: JSON.stringify(),
     headers,
