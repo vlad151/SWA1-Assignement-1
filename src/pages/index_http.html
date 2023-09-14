@@ -3,18 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Wacky Weather - Fetch</title>
-  <script defer src="main.js"></script><script defer src="xmlhttpRequest.js"></script></head>
+    <title>Wacky Weather - Http</title>
+  </head>
   <body>
-    <h1>Wacky Weather Forecast - Fetch</h1>
+    <h1>Wacky Weather Forecast - Http</h1>
 
     <nav>
       <div class="nav-header">
         <strong>Navigation</strong>
       </div>
       <ul>
-        <li><a href="index_http.html">Home - Http</a></li>
+        <li><a href="../index.html">Home - Fetch</a></li>
         <li>
           <a href="sendWeatherData_fetch.html">Send Weather Data - Fetch</a>
         </li>
@@ -32,17 +31,7 @@
         <option value="Aarhus">Aarhus</option>
         <option value="Copenhagen">Copenhagen</option>
       </select>
-      <svg
-        id="refreshButton"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M13.5 2c-5.621 0-10.211 4.443-10.475 10h-3.025l5 6.625 5-6.625h-2.975c.257-3.351 3.06-6 6.475-6 3.584 0 6.5 2.916 6.5 6.5s-2.916 6.5-6.5 6.5c-1.863 0-3.542-.793-4.728-2.053l-2.427 3.216c1.877 1.754 4.389 2.837 7.155 2.837 5.79 0 10.5-4.71 10.5-10.5s-4.71-10.5-10.5-10.5z"
-        />
-      </svg>
+      
     </div>
 
     <!-- Section to display the hourly forecast -->
@@ -94,10 +83,5 @@
         <!-- Data here -->
       </div>
     </section>
-    <script src="init.js"></script>
-
-    <!--  
-    <script src="src/xmlHttpRequest.js"></script>
-    <script src="src/fetchAPI.js"></script> -->
   </body>
 </html>

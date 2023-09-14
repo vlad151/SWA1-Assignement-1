@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Send Wacky Weather Data - Http</title>
+  <script defer src="main.js"></script><script defer src="xmlhttpRequest.js"></script></head>
+  <body>
+
+    <h1>Send Wacky Weather Data - Http</h1>
+
+    <nav>
+        <div class="nav-header">
+            <strong>Navigation</strong>
+        </div>
+        <ul>
+          <li><a href="index.html">Home - Fetch</a></li>   
+          <li><a href="index_http.html">Home - Http</a></li>
+          <li>
+            <a href="sendWeatherData_fetch.html">Send Weather Data - Fetch</a>
+          </li>   
+        </ul>
+    </nav>
+    
+    <div class="city-select-container">
+        <label for="city-select">Choose a city:</label>
+        <select id="city-select">
+            <option value="Horsens">Horsens</option>
+            <option value="Aarhus">Aarhus</option>
+            <option value="Copenhagen">Copenhagen</option>
+        </select>
+    </div>
+
+    <form id="weather-data-form">
+      <label for="temperature">Temperature:</label>
+      <input type="text" id="temperature" name="temperature" /><br /><br />
+
+
+      <button type="submit">Send Data</button>
+    </form>
+
+
+  </body>
+</html>

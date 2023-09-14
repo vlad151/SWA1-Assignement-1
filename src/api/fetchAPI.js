@@ -1,22 +1,21 @@
-import {
-  populateHourlyForecast,
-  populateLatestMeasurements,
-  populateLastDayStats,
-} from "../../populateData.js";
 import dayjs from "dayjs";
 import Type from "../objects/types.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const citySelect = document.getElementById("city-select");
 
   citySelect.addEventListener("change", () => {
     const selectedCity = citySelect.value;
     fetchWeatherData(selectedCity);
+    console.log(selectedCity, "selected city")
   });
 });
+
 const headers = {
   "Content-Type": "application/json",
   Accept: "application/json",
 };
+
 export function fetchWeatherData(city) {
   fetch(`http://localhost:8080/data/${city}`, {
     method: "GET",

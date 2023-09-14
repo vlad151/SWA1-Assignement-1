@@ -1,6 +1,7 @@
 import "../src/styles.css"
+/* 
 import {forecastData} from './api/fetchAPI.js';
-import dayjs from "dayjs";
+import dayjs from "dayjs"; */
 
 // document.addEventListener("DOMContentLoaded", function() {
 //     // Find the element with the class "card"
@@ -14,18 +15,18 @@ import dayjs from "dayjs";
 //     });
 // })
 
-let cityForecastData=forecastData("Horsens")
+/* let cityForecastData=forecastData("Horsens")
 
 const startTime= dayjs().startOf("D")
 const endTime=dayjs().endOf("D")
 console.log(startTime, "start TIme")
 console.log("end", endTime)
-console.log(forecastData("Horsens"), "forecast data")
+console.log(forecastData("Horsens"), "forecast data") */
 
 // const filteredData= cityForecastData.filter(data=>data.time.isAfter(startTime))
 // console.log("filtered data", filteredData)
-function refreshPage(){
+/* function refreshPage(){
     window.location.reload()
-}
-const refreshButton = document.getElementById("refreshButton");
-refreshButton.addEventListener("click", refreshPage);
+} */
+//const refreshButton = document.getElementById("refreshButton");
+//refreshButton.addEventListener("click", refreshPage);
