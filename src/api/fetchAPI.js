@@ -72,6 +72,11 @@ export function forecastData(city) {
     })
 
     .then((data) => {
+      timeRow.innerHTML = "";
+      tempRow.innerHTML = "";
+      precipitatationRow.innerHTML = "";
+      windRow.innerHTML = "";
+      cloudRow.innerHTML = "";
       console.log("data", data);
       let events = data;
       events.map(function (event) {
@@ -113,8 +118,6 @@ export function forecastData(city) {
 }
 
 
-let measurements=[]
-
 let minTempSpan = document.getElementById("min-temp");
 let maxTempSpan = document.getElementById("max-temp");
 let totalPrecipitationSpan = document.getElementById("total-precipitation");
@@ -129,13 +132,12 @@ export function populateStats(city) {
       if (response.ok) {
         return response.json();
       } else {
-        // console.log(response.json(), "response")
         return Promise.reject(response.statusText);
       }
     })
 
     .then((data) => {
-      measurements=data
+
       let events = data;
 
       let minTemperature = 1000;
@@ -156,7 +158,6 @@ export function populateStats(city) {
         }
 
         if (event.type === Type.PRECIPITATION) {
-          console.log("2");
           totalPrecipitation = totalPrecipitation + event.value;
         }
 
@@ -175,30 +176,29 @@ export function populateStats(city) {
       totalPrecipitationSpan.innerHTML = `${totalPrecipitation.toFixed(2)}`;
       avgWindSpeedSpan.innerHTML = `${avgWindSpeed.toFixed(2)}`;
 
+      let lastEvents = [];
+      lastEvents = events.slice(-4);
 
-      let lastEvents=[]
-      lastEvents= events.slice(-4)
-      console.log("slasdad", lastEvents)
 
- let latestMeasurementsDiv=document.getElementById("latest-measurements")
+      let latestMeasurementsDiv = document.getElementById(
+        "latest-measurements"
+      );
+      latestMeasurementsDiv.innerHTML = "";
       lastEvents.map(function (event) {
-
-       
-        let measurement= document.createElement("div")
-        let timeSpan=document.createElement("span")
-        let typeSpan=document.createElement("span")
-        let valueSpan=document.createElement("span")
-        measurement.classList.add("measurement")
-          typeSpan.innerHTML = `${event.type}`;
+        let measurement = document.createElement("div");
+        let timeSpan = document.createElement("span");
+        let typeSpan = document.createElement("span");
+        let valueSpan = document.createElement("span");
+        measurement.classList.add("measurement");
+        typeSpan.innerHTML = `${event.type}`;
         valueSpan.innerHTML = `${event.value} ${event.unit}`;
-     
+
         timeSpan.innerHTML = `${dayjs(event.time).hour()}:00`;
 
-        measurement.appendChild(timeSpan)
-        measurement.appendChild(typeSpan)
-        measurement.appendChild(valueSpan)
-        latestMeasurementsDiv.appendChild(measurement)
-        // timeSpan.appendChild(time)
+        measurement.appendChild(timeSpan);
+        measurement.appendChild(typeSpan);
+        measurement.appendChild(valueSpan);
+        latestMeasurementsDiv.appendChild(measurement);
       });
       return data;
     });
