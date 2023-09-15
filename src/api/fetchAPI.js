@@ -5,14 +5,15 @@ import Type from "../objects/types.js";
 document.addEventListener("DOMContentLoaded", () => {
   const citySelect = document.getElementById("city-select");
   const initialCity = citySelect.value;
-  forecastData(initialCity)
-
+  forecastData(initialCity);
+  populateStats(initialCity);
 
   citySelect.addEventListener("change", () => {
     const selectedCity = citySelect.value;
-    forecastData(selectedCity)
+    forecastData(selectedCity);
+    populateStats(selectedCity);
     fetchWeatherData(selectedCity);
-    console.log(selectedCity, "selected city")
+    console.log(selectedCity, "selected city");
   });
 });
 
@@ -107,6 +108,69 @@ export function forecastData(city) {
           cloudRow.appendChild(td);
         }
       });
+      return data;
+    });
+}
+
+let minTempSpan = document.getElementById("min-temp");
+let maxTempSpan = document.getElementById("max-temp");
+let totalPrecipitationSpan = document.getElementById("total-precipitation");
+let avgWindSpeedSpan = document.getElementById("avg-wind-speed");
+export function populateStats(city) {
+  fetch(`http://localhost:8080/data/${city}`, {
+    method: "GET",
+    body: JSON.stringify(),
+    headers,
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        // console.log(response.json(), "response")
+        return Promise.reject(response.statusText);
+      }
+    })
+
+    .then((data) => {
+      let events = data;
+
+      let minTemperature = 1000;
+      let maxTemperature = -1000;
+      let totalPrecipitation = 0;
+      let totalWindSpeed = 0;
+      let avgWindSpeed;
+      let windSpeeds = [];
+
+      events.forEach((event) => {
+        if (event.type === Type.TEMPERATURE) {
+          if (event.value > maxTemperature) {
+            maxTemperature = event.value;
+          }
+          if (event.value < minTemperature) {
+            minTemperature = event.value;
+          }
+        }
+
+        if (event.type === Type.PRECIPITATION) {
+          console.log("2");
+          totalPrecipitation = totalPrecipitation + event.value;
+        }
+
+        if (event.type === Type.WIND_SPEED) {
+          windSpeeds.push(event);
+        }
+      });
+
+      windSpeeds.forEach((element) => {
+        totalWindSpeed = totalWindSpeed + element.value;
+      });
+      avgWindSpeed = totalWindSpeed / windSpeeds.length;
+
+      minTempSpan.innerHTML = `${minTemperature}`;
+      maxTempSpan.innerHTML = `${maxTemperature}`;
+      totalPrecipitationSpan.innerHTML = `${totalPrecipitation.toFixed(2)}`;
+      avgWindSpeedSpan.innerHTML = `${avgWindSpeed.toFixed(2)}`;
+
       return data;
     });
 }
