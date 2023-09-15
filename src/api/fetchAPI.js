@@ -49,7 +49,6 @@ console.log(selectedCity, "selected cuty");
 var value = selectedCity.options[selectedCity.selectedIndex].value;
 // console.log(selectedCity, "selected city")
 
-const table = document.getElementById("forecastTable");
 const timeRow = document.getElementById("time_header");
 const tempRow = document.getElementById("temp_row");
 const precipitatationRow = document.getElementById("precipitation_row");
