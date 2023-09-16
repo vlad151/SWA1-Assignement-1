@@ -6,31 +6,33 @@ import wind from "../objects/wind.js";
 import Place from "../objects/places.js";
 import Type from "../objects/types.js";
 import Units from "../objects/units.js";
+import dayjs from "dayjs";
 
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('weather-data-form').addEventListener('submit', (event) => {
         event.preventDefault();
 
-         const city = document.getElementById('city-select').value;
-        const temperature = document.getElementById('temperature').value; 
+            const city = document.getElementById('city-select').value;
+            const time = dayjs()
+            const temp = document.getElementById('temperature-value').value;
+            const tempUnit = document.getElementById('temperature-unit').value;
+            const precipitationValue = document.getElementById('precipitation-value').value;
+            const precipitationType = document.getElementById('precipitation-type').value;
+            const precipitationUnit = document.getElementById('precipitation-unit').value;
+            const windValue = document.getElementById('wind-value').value;
+            const windDirection = document.getElementById('wind-direction').value;
+            const windUnit = document.getElementById('wind-unit').value;
+            const cloudCoverageValue = document.getElementById('cloudCoverage-value').value;
 
-   /*      let temp1 = temperature("2020-10-10", Place.HORSENS, 0, Type.TEMPERATURE, Units.C);
-        let precip1 = precipitation("2020-10-10", Place.HORSENS, 100, Type.PRECIPITATION, Units.MM, "Rain");
-        let cloudCoverage1 = cloudCoverage("2020-10-10", Place.HORSENS, 70, Type.CLOUD_COVERAGE, Units.PERCENT, "North");
-        let wind1 = wind("2020-10-10", Place.HORSENS, 10, Type.WIND_SPEED, Units.MS, "North");
-
-        const weatherData = [temp1, precip1, cloudCoverage1, wind1] */
+            const temp1 = temperature(time, city, temp, Type.TEMPERATURE, tempUnit);
+            const precip1 = precipitation(time, city, precipitationValue, Type.PRECIPITATION, precipitationUnit, precipitationType);
+            const cloudCoverage1 = cloudCoverage(time, city, cloudCoverageValue, Type.CLOUD_COVERAGE, Units.PERCENT);
+            const wind1 = wind(time, city, windValue, Type.WIND_SPEED, windUnit, windDirection);
+            
+         const weatherData = [temp1, precip1, cloudCoverage1, wind1] 
   
         
-         if (!temperature) {
-            console.error('Temperature is required');
-            return;
-        }
-
-        const weatherData = {
-            city,
-            temperature,
-        }; 
+    
 
         sendWeatherData(weatherData);
     });

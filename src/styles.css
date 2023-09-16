@@ -202,6 +202,10 @@ form#weather-data-form div {
     margin-right: 10em; /* Adds some margin to the right of each div to give them a bit of space */
 }
 
+#wind-label {
+    margin-top: 1em;
+}
+
 
 
 

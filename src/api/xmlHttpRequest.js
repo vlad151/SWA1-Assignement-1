@@ -2,13 +2,6 @@ import "../../src/styles.css";
 import populateHourlyForecast from "../populateHourlyForecast.js";
 import populateStats from "../populateStats.js";
 
-const table = document.getElementById("forecastTable");
-const timeRow = document.getElementById("time_header");
-const tempRow = document.getElementById("temp_row");
-const precipitatationRow = document.getElementById("precipitation_row");
-const windRow = document.getElementById("wind_row");
-const cloudRow = document.getElementById("cloud_row");
-
 document.addEventListener("DOMContentLoaded", () => {
   const citySelect = document.getElementById("city-select");
   const initialCity = citySelect.value;
