@@ -1,20 +1,66 @@
 import "../../src/styles.css";
 import dayjs from "dayjs";
 import Type from "../objects/types.js";
+import Units from "../objects/units.js";
+import WeatherData from "../objects/weatherData.js";
+import Temperature from "../objects/temperature.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const citySelect = document.getElementById("city-select");
+  const typeSelect = document.getElementById("type-select");
+  const unitSelect = document.getElementById("unit-select");
   const initialCity = citySelect.value;
+  let selectedType = typeSelect.value;
+  let selectedUnit = unitSelect.value;
+  let selectedCity = citySelect.value;
+
   forecastData(initialCity);
   populateStats(initialCity);
 
   citySelect.addEventListener("change", () => {
-    const selectedCity = citySelect.value;
+    selectedCity = citySelect.value;
     forecastData(selectedCity);
     populateStats(selectedCity);
     fetchWeatherData(selectedCity);
     console.log(selectedCity, "selected city");
   });
+
+  typeSelect.addEventListener("change", () => {
+    selectedType = typeSelect.value;
+    console.log(selectedType, "selected type");
+  });
+
+  unitSelect.addEventListener("change", () => {
+    selectedUnit = unitSelect.value;
+    console.log(selectedUnit, "selected unit");
+  });
+
+  const weatherDataForm = document.getElementById("weather-data-form-fetch");
+  weatherDataForm.addEventListener("submit", () => {
+    const date = new Date()
+    const formattedDate = date.toISOString()
+    const wind_directions = ['North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest']
+    const precipitation_types = ['rain', 'sleet', 'hail', 'snow']
+
+    let weatherData = WeatherData(formattedDate, selectedCity, document.getElementById("input").value, selectedType, selectedUnit)
+    let weatherData2 = {
+      "type": weatherData.getType(),
+      "time": weatherData.getTime(),
+      "place": weatherData.getPlace(),
+      "value": weatherData.getValue(),
+      "unit": weatherData.getUnit(),
+    }
+    if (selectedType == "wind speed") {
+      weatherData2.direction = wind_directions.at(Math.random() * wind_directions.length);
+    }
+    if (selectedType == "precipitation") {
+      weatherData2.precipitation_type = precipitation_types.at(Math.random() * precipitation_types.length);
+    }
+      
+    sendWeatherData(weatherData2)
+  });
+  
 });
 
 const headers = {
@@ -44,6 +90,22 @@ export function fetchWeatherData(city) {
   //   console.error('There has been a problem with your fetch operation:', error);
   // });
 }
+
+export function sendWeatherData(weatherData) {
+  fetch(`http://localhost:8080/data`, {
+    method: "POST",
+    body: JSON.stringify(weatherData),
+    headers,
+  }).then((response) => {
+    if (response.ok) {
+      console.log("WeatherData were successfully sent (fetchAPI)", weatherData);
+      return response.json();
+    } else {
+      throw new Error("Network response was not ok " + response.statusText);
+    }
+  });
+}
+
 let selectedCity = document.getElementById("city-select");
 console.log(selectedCity, "selected cuty");
 var value = selectedCity.options[selectedCity.selectedIndex].value;

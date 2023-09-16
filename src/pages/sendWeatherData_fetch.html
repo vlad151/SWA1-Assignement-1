@@ -32,9 +32,29 @@
         </select>
     </div>
 
-    <form id="weather-data-form">
-      <label for="temperature">Temperature:</label>
-      <input type="text" id="temperature" name="temperature" /><br /><br />
+    <form id="weather-data-form-fetch">
+
+      <label for="type-select">Choose Type:</label>
+        <select id="type-select">
+            <option value="temperature">Temperature</option>
+            <option value="precipitation">precipitation</option>
+            <option value="wind speed">wind speed</option>
+            <option value="cloud coverage">cloud coverage</option>
+          </select>
+      <label for="unit-select">Choose unit:</label>
+          <select id="unit-select">
+            <option value="C">C</option>
+            <option value="F">F</option>
+            <option value="m/s">m/s</option>
+            <option value="%">%</option>
+            <option value="inches">inches</option>
+            <option value="mph">mph</option>
+          </select>
+
+
+      <label for="input">Value:</label>
+      <input type="text" id="input" name="value" /><br /><br />
+
 
 
       <button type="submit">Send Data</button>

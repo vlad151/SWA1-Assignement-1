@@ -1,7 +1,10 @@
 import "../../src/styles.css";
 import dayjs from "dayjs"; 
 import  Type  from "../objects/types.js";
-import weatherData from "../objects/weatherData.js";
+import WeatherData from "../objects/weatherData.js";
+import Units from "../objects/units.js";
+import Temperature from "../objects/temperature.js";
+
 
 const table = document.getElementById("forecastTable");
 const timeRow = document.getElementById("time_header");
@@ -12,15 +15,58 @@ const cloudRow = document.getElementById("cloud_row");
 
 document.addEventListener("DOMContentLoaded", () => {
   const citySelect = document.getElementById("city-select");
+  const typeSelect = document.getElementById("type-select");
+  const unitSelect = document.getElementById("unit-select");
   const initialCity = citySelect.value;
+  let selectedType = typeSelect.value;
+  let selectedUnit = unitSelect.value;
+  let selectedCity = citySelect.value;
+
   requestWeatherData(initialCity);
   requestForcastData(initialCity);
 
   citySelect.addEventListener("change", () => {
-    const selectedCity = citySelect.value;
+    selectedCity = citySelect.value;
     requestWeatherData(selectedCity);
     requestForcastData(selectedCity);
   });
+
+  typeSelect.addEventListener("change", () => {
+    selectedType = typeSelect.value;
+    console.log(selectedType, "selected type");
+  });
+
+  unitSelect.addEventListener("change", () => {
+    selectedUnit = unitSelect.value;
+    console.log(selectedUnit, "selected unit");
+  });
+
+  const weatherDataForm = document.getElementById("weather-data-form-http");
+  weatherDataForm.addEventListener("submit", () => {
+
+    const date = new Date()
+    const formattedDate = date.toISOString()
+    const wind_directions = ['North', 'Northeast', 'East', 'Southeast', 'South', 'Southwest', 'West', 'Northwest']
+    const precipitation_types = ['rain', 'sleet', 'hail', 'snow']
+
+    let weatherData = WeatherData(formattedDate, selectedCity, document.getElementById("input").value, selectedType, selectedUnit)
+    let weatherData2 = {
+      "type": weatherData.getType(),
+      "time": weatherData.getTime(),
+      "place": weatherData.getPlace(),
+      "value": weatherData.getValue(),
+      "unit": weatherData.getUnit(),
+    }
+    if (selectedType == "wind speed") {
+      weatherData2.direction = wind_directions.at(Math.random() * wind_directions.length);
+    }
+    if (selectedType == "precipitation") {
+      weatherData2.precipitation_type = precipitation_types.at(Math.random() * precipitation_types.length);
+    }
+      
+    sendWeatherData(weatherData2)
+  });
+  
 });
 
 function requestWeatherData(city) {
@@ -40,6 +86,24 @@ function requestWeatherData(city) {
   };
 
   xhr.send();
+}
+
+export function sendWeatherData(weatherData) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open("POST", `http://localhost:8080/data`, true);
+
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = () => {
+      if (xhr.status === 201) {
+        console.log("WeatherData were successfully sent (HttpRequest)", weatherData);
+      } else {
+        console.error("Error sending the weather data");
+      }
+  };
+
+  xhr.send(JSON.stringify(weatherData));
 }
 
 function requestForcastData(city) {
