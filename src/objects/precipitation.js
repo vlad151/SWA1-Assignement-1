@@ -1,5 +1,8 @@
 import weatherData from "./weatherData.js";
 import Units from "./units.js";
+import Place from "../objects/places.js";
+import Type from "../objects/types.js";
+
 
 
 export default function precipitation(
@@ -24,12 +27,21 @@ export default function precipitation(
     return unit === Units.MM ? value : value * 25.4;
   }
 
+
   return {
+    time: time,
+    place: place,
+    value: value,
+    type: type,
+    unit: unit,
+    precipitation_type: precipitationType,
+  };
+/*   return {
     ..._weatherData,
     getPrecipitationType,
     convertToInches,
     convertToMM,
-  };
+  }; */
 }
 
 

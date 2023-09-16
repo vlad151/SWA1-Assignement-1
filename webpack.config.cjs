@@ -4,8 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     main: './src/init.js',
-    fetchAPI: './src/api/fetchAPI.js', // Adjust the path to point to your fetchAPI.js file 
-    xmlhttpRequest: './src/api/xmlHttpRequest.js', // Adjust the path to point to your xmlhttpRequest.js file
+    fetchAPI: './src/api/fetchAPI.js', 
+    xmlhttpRequest: './src/api/xmlHttpRequest.js', 
+    sendWeatherDataHttp: './src/api/sendWeatherDataHttp.js',
+    sendWeatherDataAPI: './src/api/sendWeatherDataAPI.js',
   },
   mode: 'development',
   devServer: {
@@ -34,12 +36,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Send Wacky Weather Data http',
       filename: 'sendWeatherData_http.html',
-      template: 'src/pages/sendWeatherData_http.html'
+      template: 'src/pages/sendWeatherData_http.html',
+      chunks: ['sendWeatherDataHttp'],
     }),
     new HtmlWebpackPlugin({
       title: 'Send Wacky Weather Data fetch',
       filename: 'sendWeatherData_fetch.html',
-      template: 'src/pages/sendWeatherData_fetch.html'
+      template: 'src/pages/sendWeatherData_fetch.html',
+      chunks: ['sendWeatherDataAPI'],
     }),
   ],
   output: {

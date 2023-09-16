@@ -2,6 +2,7 @@ import weatherData from "./weatherData.js";
 import Units from "./units.js";
 
 
+
 export default function wind(time, place, value, type, unit, direction) {
   let _weatherData = weatherData(time, place, value, type, unit);
 
@@ -17,7 +18,16 @@ export default function wind(time, place, value, type, unit, direction) {
     return unit === Units.MS ? value : value * 0.44704;;
   }
 
-  return { ..._weatherData, getDirection, convertToMPH, convertToMS };
+  return {
+    time: time,
+    place: place,
+    value: value,
+    type: type,
+    unit: unit,
+    direction: direction,
+  };
+
+  //return { ..._weatherData, getDirection, convertToMPH, convertToMS };
 }
 
 // Tests

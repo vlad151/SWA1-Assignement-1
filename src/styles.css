@@ -177,3 +177,31 @@ svg{
     border-radius: 10px;
     padding: 5px;
 }
+
+form {
+    background-color: #fff;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+form#weather-data-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the divs horizontally within the form */
+}
+
+form#weather-data-form div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10em; /* Adds some margin to the right of each div to give them a bit of space */
+}
+
+
+
+
