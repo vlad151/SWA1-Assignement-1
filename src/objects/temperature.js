@@ -13,7 +13,15 @@ export default function temperature(time, place, value, type, unit) {
     return unit === Units.C ? value : (value - 32) / 1.8;
   }
   
-  return { ..._weatherData, convertToF, convertToC };
+
+  return {
+    time: time,
+    place: place,
+    value: value,
+    type: type,
+    unit: unit,
+  };
+ //return { ..._weatherData, convertToF, convertToC };
   }
 
   // Tests

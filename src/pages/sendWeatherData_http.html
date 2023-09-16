@@ -1,45 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css">
-    <title>Send Wacky Weather Data - Http</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+  <title>Send Wacky Weather Data - Http</title>
+</head>
+<body>
 
-    <h1>Send Wacky Weather Data - Http</h1>
+<h1>Send Wacky Weather Data - Http</h1>
 
-    <nav>
-        <div class="nav-header">
-            <strong>Navigation</strong>
-        </div>
-        <ul>
-          <li><a href="index.html">Home - Fetch</a></li>   
-          <li><a href="index_http.html">Home - Http</a></li>
-          <li>
-            <a href="sendWeatherData_fetch.html">Send Weather Data - Fetch</a>
-          </li>   
-        </ul>
-    </nav>
-    
-    <div class="city-select-container">
-        <label for="city-select">Choose a city:</label>
-        <select id="city-select">
-            <option value="Horsens">Horsens</option>
-            <option value="Aarhus">Aarhus</option>
-            <option value="Copenhagen">Copenhagen</option>
-        </select>
-    </div>
+<nav>
+  <div class="nav-header">
+    <strong>Navigation</strong>
+  </div>
+  <ul>
+    <li><a href="index.html">Home - Fetch</a></li>   
+    <li><a href="index_http.html">Home - Http</a></li>
+    <li>
+      <a href="sendWeatherData_fetch.html">Send Weather Data - Fetch</a>
+    </li>   
+  </ul>
+</nav>
 
-    <form id="weather-data-form">
-      <label for="temperature">Temperature:</label>
-      <input type="text" id="temperature" name="temperature" /><br /><br />
+<div class="city-select-container">
+  <label for="city-select">Choose a city:</label>
+  <select id="city-select">
+    <option value="Horsens">Horsens</option>
+    <option value="Aarhus">Aarhus</option>
+    <option value="Copenhagen">Copenhagen</option>
+  </select>
+</div>
 
+<form id="weather-data-form">
 
-      <button type="submit">Send Data</button>
-    </form>
+  <div id="temperature-fields">
+    <h3>Temperature</h3>
+    <label for="temperature-value">Value:</label>
+    <input type="text" id="temperature-value" name="temperature-value"/><br/><br/>
+    <label for="temperature-unit">Unit:</label>
+    <select id="temperature-unit" name="temperature-unit">
+      <option value="C">Celsius (C)</option>
+      <option value="F">Fahrenheit (F)</option>
+    </select><br/><br/>
+  </div>
+  
 
+  <div id="precipitation-fields">
+    <h3>Precipitation</h3>
+    <label for="precipitation-value">Value:</label>
+    <input type="text" id="precipitation-value" name="precipitation-value"/><br/><br/>
 
-  </body>
+    <label for="precipitation-type">Precipitation Type:</label>
+    <input type="text" id="precipitation-type" name="precipitation-type"/><br/><br/>
+    <label for="precipitation-unit">Unit:</label>
+    <select id="precipitation-unit" name="precipitation-unit">
+      <option value="mm">Millimeters (mm)</option>
+      <option value="inches">Inches</option>
+    </select><br/><br/>
+  </div>
+  
+
+  <div id="cloudCoverage-fields">
+    <h3>Cloud Coverage</h3>
+    <label for="cloudCoverage-value">Value:</label>
+    <input type="text" id="cloudCoverage-value" name="cloudCoverage-value"/><br/><br/>
+  </div>
+
+  <div id="wind-fields">
+    <h3>Wind</h3>
+    <label for="wind-value">Value:</label>
+    <input type="text" id="wind-value" name="wind-value"/><br/><br/>
+    <label for="wind-direction">Direction:</label>
+    <select id="wind-direction" name="wind-direction">
+      <option value="north">North</option>
+      <option value="east">East</option>
+      <option value="south">South</option>
+      <option value="west">West</option>
+    </select><br/><br/>
+
+    <label for="wind-unit" id="wind-label">Unit:</label>
+    <select id="wind-unit" name="wind-unit">
+      <option value="m/s">Meters per second (m/s)</option>
+      <option value="mph">Miles per hour (mph)</option>
+    </select><br/><br/>
+
+  </div>
+  
+
+  <div style="width: 100%; display: flex; justify-content: flex-start;">
+    <button type="submit">Send Data</button>
+  </div>
+  
+</form>
+
+</body>
 </html>

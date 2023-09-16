@@ -1,9 +1,19 @@
 import weatherData from "./weatherData.js";
+import Place from "../objects/places.js";
+import Type from "../objects/types.js";
+import Units from "../objects/units.js";
 
 
 export default function cloudCoverage(time, place, value, type, unit) {
   let _weatherData = weatherData(time, place, value, type, unit);
-  return { ..._weatherData };
+  return {
+    time: time,
+    place: place,
+    value: value,
+    type: type,
+    unit: unit,
+  };
+  //return { ..._weatherData };
 }
 
 // Tests
