@@ -13,7 +13,6 @@ export default function populateHourlyForecast(data) {
   precipitatationRow.innerHTML = "";
   windRow.innerHTML = "";
   cloudRow.innerHTML = "";
-  console.log("data", data);
   let events = data;
   events.map(function (event) {
     let td = document.createElement("td");
@@ -23,7 +22,6 @@ export default function populateHourlyForecast(data) {
     let to = document.createElement("span");
     let time = document.createElement("span");
 
-    // type.innerHTML = `${event.type}`;
     from.innerHTML = `L: ${event.from} ${event.unit}`;
     to.innerHTML = `H: ${event.to} ${event.unit}`;
     time.innerHTML = `${dayjs(event.time).hour()}:00`;
