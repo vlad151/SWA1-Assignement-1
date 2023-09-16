@@ -26,7 +26,7 @@ function requestWeatherData(city) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         const data = JSON.parse(xhr.responseText);
-        console.log("weatherData", data);
+
       } else {
         console.error("Error fetching the weather data");
       }
@@ -45,7 +45,7 @@ function requestForcastData(city) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         const data = JSON.parse(xhr.responseText);
-        console.log("Forecast data", data);
+       
         populateHourlyForecast(data);
       } else {
         console.error(
