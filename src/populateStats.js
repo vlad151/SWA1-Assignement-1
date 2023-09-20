@@ -42,8 +42,8 @@ export default function populateStats(data){
 
   minTempSpan.innerHTML = `${minTemperature}`;
   maxTempSpan.innerHTML = `${maxTemperature}`;
-  totalPrecipitationSpan.innerHTML = `${totalPrecipitation.toFixed(2)}`;
-  avgWindSpeedSpan.innerHTML = `${avgWindSpeed.toFixed(2)}`;
+  totalPrecipitationSpan.innerHTML = `${Number(totalPrecipitation).toFixed(2)}`;
+  avgWindSpeedSpan.innerHTML = `${Number(avgWindSpeed).toFixed(2)}`;
 
   let lastEvents = [];
   lastEvents = events.slice(-4);
